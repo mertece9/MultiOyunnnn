@@ -1,3 +1,4 @@
+telebot = 0.3.1
 pyTelegramBotAPI==4.7.1
 requests==2.20.0
 ujson ==5.4.0
