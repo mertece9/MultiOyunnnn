@@ -47,13 +47,13 @@ bot_adi = ""
 if hex(getnode()) in ["0xdc7b23bb434e"]: #windows masaüstü pc ise veya laptop
     #kaç yaşındasın bot
     print("kyb")
-    bot_adi = "dene12bot"
-    bot_token = "5882258314:AAHxE2QJShU7p5cLsxATILmlxNEJ6FVPHnY"
+    bot_adi = "kelimeoyunlaribot"
+    bot_token = "5304123987:AAFFZE-lWA0ghF6xSZ1nupQHJ4wje1WIC6o"
     bot = AsyncTeleBot(bot_token, parse_mode="html")
 else:
     #sıl octopus bot
-    bot_adi = "dene12bot"
-    bot_token = "5882258314:AAHxE2QJShU7p5cLsxATILmlxNEJ6FVPHnY"
+    bot_adi = "kelimeoyunlaribot"
+    bot_token = "5304123987:AAFFZE-lWA0ghF6xSZ1nupQHJ4wje1WIC6o"
     bot = AsyncTeleBot(bot_token, parse_mode="html")
 
 temp = {}
@@ -2526,17 +2526,13 @@ async def rehber(message):
 
     await bot.send_message(chat_id,f"""🏫 <b>Oyun kuralları ve komutlar!</b> 📖
 
- ⚙️
+⚙️
 
 /oyun - Oyun Seçmeniz İçin.
 
 /bitir - Oyunu İptal Eder.
 
 /skor - Sıralamayı Gösterir.
-
-/ship - Grupta rastgele iki kişiyi shipler.
-
-/shiple - [id/kullanıcı adı/reply] seçtiğiniz kişi ile sizi shipler.
 
 
 📚 Sessiz Sinema Oyunu 2 rolden oluşuyor. Sunucu (kelimeyi anlatan) kişinin anlatmak için <b>{soru_suresi} dakikası</b> vardır. {soru_suresi} dakika içinde anlatılmayan kelime iptal olur ve yeni anlatıcı hakkı çıkar.
