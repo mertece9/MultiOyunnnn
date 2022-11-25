@@ -3299,9 +3299,7 @@ def kayit_silici():
             f(f"hesap_silme_zamanı",time.time())
             sonra_private = len(f("privates"))
             sonra_group = len(f("groups"))
-            bot.send_message(kurucu_id, f"""Kullanılmayan tüm kayıtlar silindi.
-Private: {once_private} → {sonra_private}
-Group: {once_group} → {sonra_group}""")
+            bot.send_message(kurucu_id, """Kullanılmayan tüm kayıtlar silindi.""")
         except Exception as e:
             bot.send_message(kurucu_id, str(e)+" 46328")
 
