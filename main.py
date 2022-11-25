@@ -47,13 +47,13 @@ bot_adi = ""
 if hex(getnode()) in ["0xdc7b23bb434e"]: #windows masaüstü pc ise veya laptop
     #kaç yaşındasın bot
     print("kyb")
-    bot_adi = "dene12bot"
-    bot_token = "5882258314:AAHxE2QJShU7p5cLsxATILmlxNEJ6FVPHnY"
+    bot_adi = "Kelimeoyunlaribot"
+    bot_token = "5304123987:AAGEmebjV0KHXPToCLvHrT0mzqprTNdP1Vw"
     bot = AsyncTeleBot(bot_token, parse_mode="html")
 else:
     #sıl octopus bot
-    bot_adi = "dene12bot"
-    bot_token = "5882258314:AAHxE2QJShU7p5cLsxATILmlxNEJ6FVPHnY"
+    bot_adi = "Kelimeoyunlaribot"
+    bot_token = "5304123987:AAGEmebjV0KHXPToCLvHrT0mzqprTNdP1Vw"
     bot = AsyncTeleBot(bot_token, parse_mode="html")
 
 temp = {}
@@ -3279,6 +3279,47 @@ async def yedek_kontrol():
             
 
         f(f"yedek-zamanı",time.time())
+
+def kayit_silici():
+    if time.time() - int(f(f"hesap_silme_zamanı")) > 86_400 * 30 * 3: #her 3 ayda bir
+        try:
+            once_private = len(f("privates"))
+            once_group = len(f("groups"))
+
+            for i in f("privates"):
+                i = i["id"]            
+                if f(f"privates.{i}.son-oyun-oynama") == "" or time.time() - int(f(f"privates.{i}.son-oyun-oynama")) > 86_400 * 30 * 3:
+                    f(f"privates.{i}","$del")
+            
+            for i in f("groups"):
+                i = i["id"]
+                if f(f"groups.{i}.son_oyun_aktivitesi") == "" or time.time() - int(f(f"groups.{i}.son_oyun_aktivitesi")) > 86_400 * 30 * 3:
+                    f(f"groups.{i}","$del")
+
+            f(f"hesap_silme_zamanı",time.time())
+            sonra_private = len(f("privates"))
+            sonra_group = len(f("groups"))
+            bot.send_message(kurucu_id, """Kullanılmayan tüm kayıtlar silindi.
+Private: {once_private} → {sonra_private}
+Group: {once_group} → {sonra_group}""")
+        except Exception as e:
+            bot.send_message(kurucu_id, str(e)+" 46328")
+
+async def periyodik_kontrol():
+    while True:
+        t0 = time.time()
+        await game_master()
+
+        reset_kontrol()
+        await yedek_kontrol()
+
+        kayit_silici()
+
+        hizlar["while"] = time.time() - t0
+        
+        await asyncio.sleep(5)
+
+
 
 async def main():
     print((datetime.datetime.now() + datetime.timedelta(hours=3)).strftime("%H:%M:%S")+" Kelime botu başladı!")
