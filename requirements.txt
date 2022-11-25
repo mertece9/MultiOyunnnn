@@ -1,6 +1,6 @@
 pyTelegramBotAPI==4.7.1
 requests==2.27.1
 ujson ==5.4.0
-Aiohttp
+aiohttp
 matplotlib
 Async
