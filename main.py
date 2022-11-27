@@ -694,13 +694,13 @@ async def sessiz_sinema_baslat(message, **kwargs):
         ayir = text.split("\n")
         for a in range(len(ayir)):
             if first_name in ayir[a]:
-                ayir[a] = "⚙️ Bot Yöneticisi " + ayir[a] # + " 🔥🔥"
+                ayir[a] = "• " + ayir[a] # + " 🔥"
         text = "\n".join(ayir)
     elif user_id==5237976814 or user_id==5237976814:
         ayir = text.split("\n")
         for a in range(len(ayir)):
             if first_name in ayir[a]:
-                ayir[a] = "🏅 " + ayir[a] # + " 🔥🔥"
+                ayir[a] = "🏅 " + ayir[a] # + " 🔥"
         text = "\n".join(ayir)
     
     incele_emoji = random.choice(["🔬","🔭","👁","👀","🔍","🔎"])
@@ -1307,7 +1307,7 @@ async def baslat(message):
     keyboard = types.InlineKeyboardMarkup()
     callback_button1 = types.InlineKeyboardButton(text="✍️ Sessiz Sinema", callback_data="sessiz_sinema")
     callback_button2 = types.InlineKeyboardButton(text="🔠 Kelime Türetme", callback_data="kelimeoyunu")
-    callback_button3 = types.InlineKeyboardButton(text="🌟 D | C Oyunu", callback_data="dogrulukcesaret")
+    callback_button3 = types.InlineKeyboardButton(text="🌟 Doğruluk Cesaret", callback_data="dogrulukcesaret")
     keyboard.add(callback_button1)
     keyboard.add(callback_button2)
     keyboard.add(callback_button3)
@@ -1411,9 +1411,8 @@ async def skor_master(cagri):
                 skorlar = f(f"groups.{chat_id}.bilme-sayıları")
 
                 callback_button1 = types.InlineKeyboardButton(text="❌ Sil", callback_data='sil')
-                callback_button2 = types.InlineKeyboardButton(text="♻️ Yenile", callback_data=f'skor_{ne_skoru}_{tip}')
                 callback_button3 = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data=f'skor_{ne_skoru}')
-                keyboard.add(callback_button1, callback_button2, callback_button3)
+                keyboard.add(callback_button1, callback_button3)
 
                 if skorlar!=[] and "dict" in str(type(skorlar)):
                     txt = f"Bu gruptaki en iyi {max_skor} oyuncu 📜\n\n"
@@ -1478,15 +1477,13 @@ Bulduğu cevaplar: \t{f(f"privates.{user_id}.bilme-sayısı")}
             '''
 
                 callback_button1 = types.InlineKeyboardButton(text="❌ Sil", callback_data='sil')
-                callback_button2 = types.InlineKeyboardButton(text="♻️ Yenile", callback_data=f'skor_{ne_skoru}_{tip}')
                 callback_button3 = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data=f'skor_{ne_skoru}')
-                keyboard.add(callback_button1, callback_button2, callback_button3)
+                keyboard.add(callback_button1, callback_button3)
                 await bot.edit_message_text(chat_id=chat_id, message_id=cagri.message.message_id, text=txt, reply_markup=keyboard)
             elif tip == "kureselskor":
                 callback_button1 = types.InlineKeyboardButton(text="❌ Sil", callback_data='sil')
-                callback_button2 = types.InlineKeyboardButton(text="♻️ Yenile", callback_data=f'skor_{ne_skoru}_{tip}')
                 callback_button3 = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data=f'skor_{ne_skoru}')
-                keyboard.add(callback_button1, callback_button2, callback_button3)
+                keyboard.add(callback_button1, callback_button3)
                 
                 kullanicilar = f(f"privates", output="$array")
 
@@ -1553,9 +1550,8 @@ Bulduğu cevaplar: \t{f(f"privates.{user_id}.bilme-sayısı")}
                 skorlar = f(f"groups.{chat_id}.haftalık-bilme-sayıları")
 
                 callback_button1 = types.InlineKeyboardButton(text="❌ Sil", callback_data='sil')
-                callback_button2 = types.InlineKeyboardButton(text="♻️ Yenile", callback_data=f'skor_{ne_skoru}_{tip}')
                 callback_button3 = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data=f'skor_{ne_skoru}')
-                keyboard.add(callback_button1, callback_button2, callback_button3)
+                keyboard.add(callback_button1, callback_button3)
 
                 if skorlar!=[] and skorlar != "":
                     txt = "Gruptaki haftanın en iyi oyuncuları 📜\n\n"
@@ -1609,9 +1605,8 @@ Bulduğu cevaplar: \t{f(f"privates.{user_id}.bilme-sayısı")}
                         del ww[i]
 
                 callback_button1 = types.InlineKeyboardButton(text="❌ Sil", callback_data='sil')
-                callback_button2 = types.InlineKeyboardButton(text="♻️ Yenile", callback_data=f'skor_{ne_skoru}_{tip}')
                 callback_button3 = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data=f'skor_{ne_skoru}')
-                keyboard.add(callback_button1, callback_button2, callback_button3)
+                keyboard.add(callback_button1, callback_button3)
                 if skorlar!=[]:
                     txt = "Global haftanın en iyi oyuncuları 📜\n\n"
 
@@ -1666,9 +1661,8 @@ Bulduğu cevaplar: \t{f(f"privates.{user_id}.bilme-sayısı")}
                         del ww[i]
 
                 callback_button1 = types.InlineKeyboardButton(text="❌ Sil", callback_data='sil')
-                callback_button2 = types.InlineKeyboardButton(text="♻️ Yenile", callback_data=f'skor_{ne_skoru}_{tip}')
                 callback_button3 = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data=f'skor_{ne_skoru}')
-                keyboard.add(callback_button1, callback_button2, callback_button3)
+                keyboard.add(callback_button1, callback_button3)
                 if skorlar!=[]:
                     txt = "Global haftanın en iyi grupları 📜\n\n"
 
@@ -1761,17 +1755,15 @@ Bulduğu cevaplar: \t{f(f"privates.{user_id}.bilme-sayısı")}
                 txt += f"\n💎 Bu grup ise {sira}. sırada bulunuyor."
 
                 callback_button1 = types.InlineKeyboardButton(text="❌ Sil", callback_data='sil')
-                callback_button2 = types.InlineKeyboardButton(text="♻️ Yenile", callback_data=f'skor_{ne_skoru}_{tip}')
                 callback_button3 = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data=f'skor_{ne_skoru}')
-                keyboard.add(callback_button1, callback_button2, callback_button3)
+                keyboard.add(callback_button1, callback_button3)
                 await bot.edit_message_text(chat_id=chat_id, message_id=cagri.message.message_id, text=txt, reply_markup=keyboard)
         
         elif ne_skoru == "kelimeoyunu":          
             if tip == "kureselskor":
                 callback_button1 = types.InlineKeyboardButton(text="❌ Sil", callback_data='sil')
-                callback_button2 = types.InlineKeyboardButton(text="♻️ Yenile", callback_data=f'skor_{ne_skoru}_{tip}')
                 callback_button3 = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data=f'skor_{ne_skoru}')
-                keyboard.add(callback_button1, callback_button2, callback_button3)
+                keyboard.add(callback_button1, callback_button3)
                 
                 kullanicilar = f(f"privates", output="$array")
 
@@ -1839,9 +1831,8 @@ Bulduğu cevaplar: \t{f(f"privates.{user_id}.bilme-sayısı")}
                 skorlar = f(f"groups.{chat_id}.kelime-turet-bilme")
 
                 callback_button1 = types.InlineKeyboardButton(text="❌ Sil", callback_data='sil')
-                callback_button2 = types.InlineKeyboardButton(text="♻️ Yenile", callback_data=f'skor_{ne_skoru}_{tip}')
                 callback_button3 = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data=f'skor_{ne_skoru}')
-                keyboard.add(callback_button1, callback_button2, callback_button3)
+                keyboard.add(callback_button1, callback_button3)
 
                 if skorlar!=[] and "dict" in str(type(skorlar)):
                     txt = f"Bu gruptaki en iyi {max_skor} oyuncu 📜\n\n"
@@ -1934,9 +1925,8 @@ Bulduğu cevaplar: \t{f(f"privates.{user_id}.bilme-sayısı")}
                 txt += f"\n💎 Bu grup ise {sira}. sırada bulunuyor."
 
                 callback_button1 = types.InlineKeyboardButton(text="❌ Sil", callback_data='sil')
-                callback_button2 = types.InlineKeyboardButton(text="♻️ Yenile", callback_data=f'skor_{ne_skoru}_{tip}')
                 callback_button3 = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data=f'skor_{ne_skoru}')
-                keyboard.add(callback_button1, callback_button2, callback_button3)
+                keyboard.add(callback_button1, callback_button3)
                 await bot.edit_message_text(chat_id=chat_id, message_id=cagri.message.message_id, text=txt, reply_markup=keyboard)
 
         else:
@@ -2502,7 +2492,7 @@ Kazananlar 👑
     else:
         await bot.send_message(chat_id, "🧩 Aktif bir oyun yok.")
 
-@bot.message_handler(commands=['yardim'])
+@bot.message_handler(commands=['komutlar'])
 async def rehber(message):
     #chat_tipi = message.chat.type
 
@@ -2513,20 +2503,15 @@ async def rehber(message):
     soru_suresi = f("soru_suresi")
     soru_suresi = str(round(soru_suresi/60,1)).replace(".0","")
 
-    await bot.send_message(chat_id,f"""🏫 <b>Oyun kuralları ve komutlar!</b> 📖
+    await bot.send_message(chat_id,f"""🎯 <b>Oyun Komutlar :</b>
 
-⚙️
+/oyun - Oyun Seçmenizi Sağlar .
 
-/oyun - Oyun Seçmeniz İçin.
+/bitir - Oyunu Sonlandırır .
 
-/bitir - Oyunu İptal Eder.
+/skor - Tüm Skorları Gösterir .
 
-/skor - Sıralamayı Gösterir.
-
-
-📚 Sessiz Sinema Oyunu 2 rolden oluşuyor. Sunucu (kelimeyi anlatan) kişinin anlatmak için <b>{soru_suresi} dakikası</b> vardır. {soru_suresi} dakika içinde anlatılmayan kelime iptal olur ve yeni anlatıcı hakkı çıkar.
-
-📚 Kelimeyi Türet Botunda Botun Verdiği Karışık Kelimelerden Doğru Olanı Bulmalısınız.""")
+""")
 
 
 
