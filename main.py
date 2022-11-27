@@ -516,14 +516,11 @@ async def log_gonder(**kwargs):
         await bot.send_message(-1001878251628, f"""
 <b> ~~ 📢 Yeni Log ~~</b>
 
-Oyun sayısı: <code>{len(oyunlar)}</code>
+Kişi: <code>{f(f"privates.{kwargs.get('user_id','')}.first_name")}</code>
+Grup: <code>{f(f"groups.{chat_id}.username")}</code>
 
-Firstname: <code>{f(f"privates.{kwargs.get('user_id','')}.first_name")}</code>
-Group name: <code>{f(f"groups.{chat_id}.username")}</code>
-
-User id: <code>{kwargs.get('user_id','')}</code>
-Chat id: <code>{chat_id}</code>
-Game id: <code>{kwargs.get('game_id','')}</code>
+Kişi id: <code>{kwargs.get('user_id','')}</code>
+Grup id: <code>{chat_id}</code>
 
 Eylem: <code>{kwargs.get('eylem','')}</code>
 
@@ -634,7 +631,7 @@ async def sessiz_sinema_baslat(message, **kwargs):
 
     # Oyun var.
 
-    text = kwargs.get("text", f'<a href="tg://user?id={user_id}">{first_name}</a> kelimeyi sunuyor! 🎙')
+    text = kwargs.get("text", f'<a href="tg://user?id={user_id}">{first_name}</a> kelimeyi sunuyor 🎙')
 
 
     try:
@@ -656,9 +653,9 @@ async def sessiz_sinema_baslat(message, **kwargs):
             ayir = text.split("\n")
             for a in range(len(ayir)):
                 if first_name in ayir[a]:
-                    ayir[a] = "👑🥇 " + ayir[a]
+                    ayir[a] = "👑 " + ayir[a]
             text = "\n".join(ayir)
-            #text += f'\n\n👑🥇 Bu kişi bu grubun birincisi 🥇👑'
+            #text += f'\n\n👑 Bu kişi bu grubun birincisi 👑'
         elif ikinci == suser_id:
             ayir = text.split("\n")
             for a in range(len(ayir)):
@@ -684,7 +681,7 @@ async def sessiz_sinema_baslat(message, **kwargs):
         #    ayir = text.split("\n")
         #    for a in range(len(ayir)):
         #        if first_name in ayir[a]:
-        #            ayir[a] = "🔥🔥 " + ayir[a] # + " 🔥🔥"
+        #            ayir[a] = "🔥 " + ayir[a] # + " 🔥"
         #    text = "\n".join(ayir)
             
     except Exception as e:
@@ -713,10 +710,10 @@ async def sessiz_sinema_baslat(message, **kwargs):
     
     oyun_id = int(time.time() * zaman_hassasiyeti)
 
-    callback_button3 = types.InlineKeyboardButton(text="Kelimeye bak 👀"+incele_emoji, callback_data="kelime_bak")
-    callback_button2 = types.InlineKeyboardButton(text="Kelimeyi geç ♻️ "+gec_emoji, callback_data="siradaki_kelime")
-    #callback_button = types.InlineKeyboardButton(text="Soru Yaz "+soru_yaz_emoji, callback_data="kelime_gir")
-    callback_button = types.InlineKeyboardButton(text="Kendi kelimem 📝"+soru_yaz_emoji, url=f"https://t.me/{bot_adi}?start={oyun_id}")
+    callback_button3 = types.InlineKeyboardButton(text="Kelimeye Bak 👀", callback_data="kelime_bak")
+    callback_button2 = types.InlineKeyboardButton(text="Kelimeyi Geç ♻️", callback_data="siradaki_kelime")
+    #callback_button = types.InlineKeyboardButton(text="Kelime Yaz ✏️", callback_data="kelime_gir")
+    callback_button = types.InlineKeyboardButton(text="Kendi Kelimem 📝", url=f"https://t.me/{bot_adi}?start={oyun_id}")
 
 
     
@@ -724,7 +721,7 @@ async def sessiz_sinema_baslat(message, **kwargs):
     keyboard.add(callback_button2)
     keyboard.add(callback_button, callback_button3)
     if oyun_modu != "sabit":
-        callback_button4 = types.InlineKeyboardButton(text="Sunucu Olmak İstemiyorum ❌"+istemiyorum_emoji, callback_data="istemiyorum")
+        callback_button4 = types.InlineKeyboardButton(text="Sunucu Olmak İstemiyorum ⛔", callback_data="istemiyorum")
         keyboard.add(callback_button4)
     #bot.send_message(chat_id, text, reply_markup=keyboard)
 
@@ -841,7 +838,7 @@ async def kelime_turet_baslat(message, **kwargs):
     keyboard = types.InlineKeyboardMarkup()
     callback_button1 = types.InlineKeyboardButton(text="Pas Geç 🚫", callback_data="pas_gec")
     callback_button2 = types.InlineKeyboardButton(text="İpucu 🔎", callback_data="ipucu_kelime")
-    #callback_button3 = types.InlineKeyboardButton(text="Harf istiyorum ☝️", callback_data="kelimeturet_harf")
+    #callback_button3 = types.InlineKeyboardButton(text="Harf istiyorum 🌟", callback_data="kelimeturet_harf")
 
     
     keyboard.add(callback_button1, callback_button2) #, callback_button3
@@ -1073,13 +1070,13 @@ def oban(message):
 
             if banli_mi:            
                 sql_execute(f'DELETE FROM ban_listesi WHERE id="{alintilanan_user_id}"') 
-                bot.send_message(chat_id, f"🛡✅ {message.reply_to_message.from_user.first_name} ({alintilanan_user_id}) artık yasaksız", reply_markup=keyboard, reply_to_message_id=message.id)
+                bot.send_message(chat_id, f"✅ {message.reply_to_message.from_user.first_name} ({alintilanan_user_id}) artık yasaksız", reply_markup=keyboard, reply_to_message_id=message.id)
             else:
                 sql_execute(f"INSERT INTO ban_listesi (id) VALUES ('{alintilanan_user_id}')") 
-                bot.send_message(chat_id, f"🗡🩸 {message.reply_to_message.from_user.first_name} ({alintilanan_user_id}) artık yasaklı", reply_markup=keyboard, reply_to_message_id=message.id)
+                bot.send_message(chat_id, f"🗡 {message.reply_to_message.from_user.first_name} ({alintilanan_user_id}) artık yasaklı", reply_markup=keyboard, reply_to_message_id=message.id)
                 try:
                     if alintilanan_user_id == chat_id:
-                        bot.send_message(chat_id, "⚠️ Grup bot tarafından engellenmiştir. İtiraz etmek istiyorsanız: @Samilben")
+                        bot.send_message(chat_id, "⚠️ Grup bot tarafından engellenmiştir.")
                         bot.leave_chat(chat_id)
                 except Exception as e:
                     print("sadsadsad",e,chat_id)
@@ -1093,13 +1090,13 @@ Herhangi bir kişi alıntılanmamış!
 
         if banli_mi:            
             sql_execute(f'DELETE FROM ban_listesi WHERE id="{ayrik[1]}"') 
-            bot.send_message(chat_id, f"🛡✅ {ayrik[1]} artık yasaksız", reply_markup=keyboard, reply_to_message_id=message.id)
+            bot.send_message(chat_id, f"✅ {ayrik[1]} artık yasaksız", reply_markup=keyboard, reply_to_message_id=message.id)
         else:
             sql_execute(f"INSERT INTO ban_listesi (id) VALUES ('{ayrik[1]}')") 
-            bot.send_message(chat_id, f"🗡🩸 {ayrik[1]} artık yasaklı", reply_markup=keyboard, reply_to_message_id=message.id)
+            bot.send_message(chat_id, f"🗡 {ayrik[1]} artık yasaklı", reply_markup=keyboard, reply_to_message_id=message.id)
             try:
                 if alintilanan_user_id == chat_id:
-                    bot.send_message(chat_id, "⚠️ Grup bot tarafından engellenmiştir. İtiraz etmek istiyorsanız: @Samilben")
+                    bot.send_message(chat_id, "⚠️ Grup bot tarafından engellenmiştir.")
                     bot.leave_chat(chat_id)
             except Exception as e:
                 print("sadsadsad",e,chat_id)
@@ -1202,8 +1199,8 @@ async def cesaret(message):
     user_id = message.from_user.id #sabit    
     
     keyboard = types.InlineKeyboardMarkup()
-    callback_button1 = types.InlineKeyboardButton(text="Doğruluk ✅", callback_data="dogrulukcesaret_d")
-    callback_button2 = types.InlineKeyboardButton(text="Cesaret 🔪", callback_data="dogrulukcesaret_c")
+    callback_button1 = types.InlineKeyboardButton(text="🎯 Doğruluk", callback_data="dogrulukcesaret_d")
+    callback_button2 = types.InlineKeyboardButton(text="🌟 Cesaret", callback_data="dogrulukcesaret_c")
     keyboard.add(callback_button1, callback_button2)
     
     yazi = f"<a href='tg://user?id={user_id}'>{first_name}</a>, <b>cesareti</b> seçti!\n\n"
@@ -1234,8 +1231,8 @@ async def dogruluk(message):
     user_id = message.from_user.id #sabit    
     
     keyboard = types.InlineKeyboardMarkup()
-    callback_button1 = types.InlineKeyboardButton(text="Doğruluk ✅", callback_data="dogrulukcesaret_d")
-    callback_button2 = types.InlineKeyboardButton(text="Cesaret 🔪", callback_data="dogrulukcesaret_c")
+    callback_button1 = types.InlineKeyboardButton(text="🎯 Doğruluk ", callback_data="dogrulukcesaret_d")
+    callback_button2 = types.InlineKeyboardButton(text="🌟 Cesaret ", callback_data="dogrulukcesaret_c")
     keyboard.add(callback_button1, callback_button2)
     
     yazi = f"<a href='tg://user?id={user_id}'>{first_name}</a>, <b>doğruluğu</b> seçti!\n\n"
@@ -1258,7 +1255,7 @@ async def skorlar_komut(message):    #chat_tipi = message.chat.type
 
     keyboard = types.InlineKeyboardMarkup()
     callback_button1 = types.InlineKeyboardButton(text="✍️ Sessiz Sinema", callback_data="skor_sessizsinema")
-    callback_button2 = types.InlineKeyboardButton(text="🔠 Kelime Türetme", callback_data="skor_kelimeoyunu")
+    callback_button2 = types.InlineKeyboardButton(text="🔠 Boşluk Doldurma", callback_data="skor_kelimeoyunu")
     keyboard.add(callback_button1)
     keyboard.add(callback_button2)
     yazi = f"📜 Hangi oyunun skorunu görmek isterdiniz?"
@@ -1277,7 +1274,7 @@ async def baslat(message):
 
 
     if sql_get(f"SELECT * FROM ban_listesi WHERE id LIKE '{chat_id}'") != []:
-        await bot.send_message(chat_id, "⚠️ Grup bot tarafından engellenmiştir. İtiraz etmek istiyorsanız: @Samilben")
+        await bot.send_message(chat_id, "⚠️ Grup bot tarafından engellenmiştir.")
         await bot.leave_chat(chat_id)
         return
     elif sql_get(f"SELECT * FROM ban_listesi WHERE id LIKE '{user_id}'") != []:
@@ -1290,7 +1287,7 @@ async def baslat(message):
         await bot.send_message(message.chat.id, "Bu komut sadece grup için kullanılabilir.")
         return
     if konumlar != False:
-        await bot.send_message(message.chat.id, "🧸 Oyun zaten başlatılmış.")
+        await bot.send_message(message.chat.id, "🎯 Oyun zaten başlatılmış.\nDurdurmak için /bitir .")
         return
 
     first_name = None
@@ -1310,11 +1307,11 @@ async def baslat(message):
     keyboard = types.InlineKeyboardMarkup()
     callback_button1 = types.InlineKeyboardButton(text="✍️ Sessiz Sinema", callback_data="sessiz_sinema")
     callback_button2 = types.InlineKeyboardButton(text="🔠 Kelime Türetme", callback_data="kelimeoyunu")
-    callback_button3 = types.InlineKeyboardButton(text="🍾 Doğruluk/Cesaret", callback_data="dogrulukcesaret")
+    callback_button3 = types.InlineKeyboardButton(text="🌟 D | C Oyunu", callback_data="dogrulukcesaret")
     keyboard.add(callback_button1)
     keyboard.add(callback_button2)
     keyboard.add(callback_button3)
-    await bot.send_message(chat_id, f"📜 <b>Kelime Oyun Botu'na</b>'a hoş geldiniz! Lütfen bir oyun tipi seçiniz.", reply_markup=keyboard)
+    await bot.send_message(chat_id, f"📜 Lütfen bir oyun tipi seçiniz.", reply_markup=keyboard)
 
 #@bot.message_handler(state=MyStates.kelime)
 async def kelime_gir(message, grup_id): #grup_id    
@@ -1326,7 +1323,7 @@ async def kelime_gir(message, grup_id): #grup_id
     if f(f"games.{oyun_id}.açan_id") == user_id:
         yeni_kelime = message.text[:500]
         #keyboard = types.InlineKeyboardMarkup()
-        #callback_button1 = types.InlineKeyboardButton(text="Oyuna geri dön 🚗", url=f"tg://user?id={grup_id}")
+        #callback_button1 = types.InlineKeyboardButton(text="Oyuna geri dön .", url=f"tg://user?id={grup_id}")
         #keyboard.add(callback_button1)
         await bot.send_message(user_id,"👍 Artık yeni sorun: "+yeni_kelime) #, reply_markup=keyboard
         f(f"games.{oyun_id}.kelime", yeni_kelime)
@@ -1365,7 +1362,7 @@ async def skor_master(cagri):
     #     callback_button1 = types.InlineKeyboardButton(text="❌ Sil", callback_data='sil')
     #     callback_button3 = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data=f'skor_')
     #     keyboard.add(callback_button1, callback_button3)
-    #     bot.edit_message_text(chat_id=chat_id, message_id=cagri.message.message_id, text="🌶 Bu komut sadece gruplarda çalışır.", reply_markup=keyboard)
+    #     bot.edit_message_text(chat_id=chat_id, message_id=cagri.message.message_id, text="• Bu komut sadece gruplarda çalışır.", reply_markup=keyboard)
     #     return
     
     first_name = None
@@ -1389,26 +1386,18 @@ async def skor_master(cagri):
         if ne_skoru == "sessizsinema":
             callback_button1 = types.InlineKeyboardButton(text="Global Skor 🌐", callback_data="skor_sessizsinema_kureselskor")
             callback_button2 = types.InlineKeyboardButton(text="Skorum 📊", callback_data="skor_sessizsinema_skorum")
-            callback_button3 = types.InlineKeyboardButton(text="Gruptaki Skor 📥", callback_data="skor_sessizsinema_skor")
-            callback_button4 = types.InlineKeyboardButton(text="Global Grup 🌎", callback_data="skor_sessizsinema_kureselgrup")
-            callback_button5 = types.InlineKeyboardButton(text="Haftalık Skor 📆", callback_data="skor_sessizsinema_haftalikgrup")
-            callback_button6 = types.InlineKeyboardButton(text="Haftalık Global 📆", callback_data="skor_sessizsinema_haftalikskorprivate")
-            callback_button7 = types.InlineKeyboardButton(text="Haftalık Gruplar 📆", callback_data="skor_sessizsinema_haftalikskorgroup")
+            callback_button3 = types.InlineKeyboardButton(text="Gruptaki Skor 📥", callback_data="skor_sessizsinema_skor")           
             geri_don_btn = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data='skor_')
             keyboard.add(callback_button2, callback_button1)
-            keyboard.add(callback_button3, callback_button4)
-            keyboard.add(callback_button5, callback_button6)
-            keyboard.add(callback_button7)
+            keyboard.add(callback_button3)
             keyboard.add(geri_don_btn)
 
             await bot.edit_message_text(chat_id=chat_id, message_id=cagri.message.message_id, text="🕹 Hangi skoru görmek istersiniz?", reply_markup=keyboard)
         elif ne_skoru == "kelimeoyunu":
             callback_button1 = types.InlineKeyboardButton(text="Global Skor 🌐", callback_data="skor_kelimeoyunu_kureselskor")
             callback_button3 = types.InlineKeyboardButton(text="Gruptaki Skor 📥", callback_data="skor_kelimeoyunu_skor")
-            callback_button4 = types.InlineKeyboardButton(text="Global Grup 🌎", callback_data="skor_kelimeoyunu_kureselgrup")
             geri_don_btn = types.InlineKeyboardButton(text="🔙 Geri dön", callback_data='skor_')
             keyboard.add(callback_button1, callback_button3)
-            keyboard.add(callback_button4)
             keyboard.add(geri_don_btn)
 
             await bot.edit_message_text(chat_id=chat_id, message_id=cagri.message.message_id, text="🕹 Hangi skoru görmek istersiniz?", reply_markup=keyboard)
@@ -2272,8 +2261,8 @@ async def callback_inline(cagri): #çağrıcı cagrici
             return
         
         keyboard = types.InlineKeyboardMarkup()
-        callback_button1 = types.InlineKeyboardButton(text="Doğruluk ✅", callback_data="dogrulukcesaret_d")
-        callback_button2 = types.InlineKeyboardButton(text="Cesaret 🔪", callback_data="dogrulukcesaret_c")
+        callback_button1 = types.InlineKeyboardButton(text="🎯 Doğruluk", callback_data="dogrulukcesaret_d")
+        callback_button2 = types.InlineKeyboardButton(text="🌟 Cesaret", callback_data="dogrulukcesaret_c")
         keyboard.add(callback_button1, callback_button2)
         
 
@@ -2308,19 +2297,19 @@ async def callback_inline(cagri): #çağrıcı cagrici
         acan_id = f(f"games.{oyun_id}.açan_id")
 
         if oyun_var_mi(chat_id) == False:
-            await bot.answer_callback_query(cagri.id, f'❓ Şu anda aktif bir oyun yok. Başlatmak için lütfen /game yazınız.', show_alert=True)
+            await bot.answer_callback_query(cagri.id, f'❓ Şu anda aktif bir oyun yok. Başlatmak için lütfen /oyun yazınız.', show_alert=True)
             return
 
     # or " " + first_name +" kelime" in cagri.message.text
         if acan_id == user_id:
 
             #if sorgu == "kelime_gir":
-            #    bot.answer_callback_query(cagri.id, url = "t.me/Kelimeoyunlaribot?start=test")
+            #    bot.answer_callback_query(cagri.id, url = "t.me/SharkGameTRBot?start=test")
                 #try:
                 #    sent = bot.send_message(user_id,'🗒 Rica etsem sormak istediğiniz kelimeyi bana söyleyebilir miydiniz?:')
                 #    bot.register_next_step_handler(sent, kelime_gir, chat_id)
                 #except:
-                #    bot.answer_callback_query(cagri.id, url = "telegram.me/Kelimeoyunlaribot?start=start")
+                #    bot.answer_callback_query(cagri.id, url = "telegram.me/SharkGameTRBot?start=start")
                 #    #bot.answer_callback_query(cagri.id, f'🤖 Önce botla sohbeti başlatmalısınız.', show_alert=False)
 
             if sorgu == "kelime_bak":
@@ -2619,7 +2608,7 @@ async def messages(mesaj):
     if user_id in admins:
         if msg.startswith(">"):
             await bot.delete_message(chat_id, mesaj.message_id)
-            await bot.send_message(chat_id, f"<b>⚙️ Yönetici {first_name}:</b> {msg[1:].strip()}")
+            await bot.send_message(chat_id, f"<b>• {first_name}:</b> {msg[1:].strip()}")
             
         try:
             if msg.startswith("/eval "):
