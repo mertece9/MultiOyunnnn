@@ -2537,11 +2537,7 @@ async def rehber(message):
 
 📚 Sessiz Sinema Oyunu 2 rolden oluşuyor. Sunucu (kelimeyi anlatan) kişinin anlatmak için <b>{soru_suresi} dakikası</b> vardır. {soru_suresi} dakika içinde anlatılmayan kelime iptal olur ve yeni anlatıcı hakkı çıkar.
 
-📚 Kelimeyi Türet Botunda Botun Verdiği Karışık Kelimelerden Doğru Olanı Bulmalısınız.
-
-📚 Grup içi haftalık skor ve global haftalık skorlar ile yarışmalar düzenleyebilirsiniz.
-
-🙏 Yardım ve sorularınız için: @Samilben""")
+📚 Kelimeyi Türet Botunda Botun Verdiği Karışık Kelimelerden Doğru Olanı Bulmalısınız.""")
 
 
 
@@ -2564,7 +2560,7 @@ async def messages(mesaj):
 
 
     if sql_get(f"SELECT * FROM ban_listesi WHERE id LIKE '{chat_id}'") != []:
-        bot.send_message(chat_id, "⚠️ Grup bot tarafından engellenmiştir. İtiraz etmek istiyorsanız: @Samilben")
+        bot.send_message(chat_id, "⚠️ Grup bot tarafından engellenmiştir.")
         bot.leave_chat(chat_id)
         return
     elif sql_get(f"SELECT * FROM ban_listesi WHERE id LIKE '{user_id}'") != []:
