@@ -47,13 +47,13 @@ bot_adi = ""
 if hex(getnode()) in ["0xdc7b23bb434e"]: #windows masaüstü pc ise veya laptop
     #kaç yaşındasın bot
     print("kyb")
-    bot_adi = "StarGameTrBot"
-    bot_token = "5922498417"
+    bot_adi = "@SharkGameTRBot"
+    bot_token = "5968821885"
     bot = AsyncTeleBot(bot_token, parse_mode="html")
 else:
     #sıl octopus bot
-    bot_adi = "StarGameTrBot"
-    bot_token = "5922498417:AAFod3d-vwH80Nh1a4R_ni8bVivSzGbc2jw"
+    bot_adi = "@SharkGameTRBot"
+    bot_token = "5968821885:AAGVAnBcUPeCWf89Fg-Iz5DFxxeErXx0j84"
     bot = AsyncTeleBot(bot_token, parse_mode="html")
 
 temp = {}
