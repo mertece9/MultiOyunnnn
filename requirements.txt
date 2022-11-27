@@ -8,10 +8,10 @@ ujson ==5.4.0
 aiohttp
 matplotlib
 requests
-aiohttp
 aiofiles
 asyncio
 ffmpeg-python
 ffmpeg
 Pillow
 ujson
+telebot
