@@ -514,7 +514,7 @@ async def log_gonder(**kwargs):
 
     try:
         await bot.send_message(-1001878251628, f"""
-<b> ~~ 📢 New Log ~~</b>
+<b> ~~ 📢 Yeni Log ~~</b>
 
 Oyun sayısı: <code>{len(oyunlar)}</code>
 
@@ -559,7 +559,7 @@ async def start_private(message): #, **kwargs
         if len(ayrik) == 2:
             acan_id = f(f"games.{ayrik[1]}.açan_id") 
             if acan_id == "":
-                await bot.send_message(user_id,'Maalesef bu oyunun süresi dolmuş 😿')
+                await bot.send_message(user_id,'Maalesef bu oyunun süresi dolmuş .')
                 return
 
 
@@ -571,16 +571,16 @@ async def start_private(message): #, **kwargs
                 temp[f"{user_id}.kelime"] = {}
                 temp[f"{user_id}.kelime"]["konum"] = konum
             else:
-                await bot.send_message(user_id,'Bu oyunu siz açmamışsınız 🚫😕')
+                await bot.send_message(user_id,'Bu oyunu siz açmamışsınız 🚫')
         else:
             f(f"privates.{user_id}.start",True)
             keyboard = types.InlineKeyboardMarkup()
 
-            callback_button = types.InlineKeyboardButton(text="Botu grubuna ekle 👪", url="https://t.me/StarGameTrBot?startgroup=a")
-            callback_button2 = types.InlineKeyboardButton(text="Destek ve İletişim ⚙️", url="https://t.me/StarBotKanal")
+            callback_button = types.InlineKeyboardButton(text="🇹🇷 ʙᴇɴɪ ɢʀᴜʙᴀ ᴇᴋʟᴇ 🇹🇷", url="https://t.me/SharkGameTRBot?startgroup=a")
+            callback_button2 = types.InlineKeyboardButton(text="⚙️ ʀᴇsᴍɪ ᴋᴀɴᴀʟ ⚙️", url="https://t.me/StarBotKanal")
             keyboard.add(callback_button)
             keyboard.add(callback_button2)
-            await bot.send_message(chat_id, f'<b>Kelime oyun botuna hoş geldin.\n\nBen bir oyun botuyum.🎮\n\nÇeşitli oyunlar oynamak ve eğlenceli vakit geçirmek için benimle oynayabilirsin 🎉\n\nBenimle oynamak için beni bir gruba eklemen lazım. Kuralları görmek için /yardim tıklayınız.</b>',  reply_markup=keyboard)
+            await bot.send_message(chat_id, f'<b>🇹🇷 Merhaba, Ben bir oyun botuyum .\n\n🎯 Çeşitli oyunlar oynamak ve eğlenceli vakit geçirmek için benimle oynayabilirsin .\n\n⚙️ Benimle oynamak için beni bir gruba ekle ve /komutlar tıklayınız.</b>',  reply_markup=keyboard)
 
 
 
