@@ -14,4 +14,3 @@ ffmpeg-python
 ffmpeg
 Pillow
 ujson
-telebot
