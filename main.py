@@ -515,7 +515,6 @@ async def log_gonder(**kwargs):
         await bot.send_message(-1001878251628, f"""
 <b> ~~ 📢 Yeni Log ~~</b>
 
-Kişi: <code>{f(f"privates.{kwargs.get('user_id','')}.first_name")}</code>
 Grup: <code>{f(f"groups.{chat_id}.username")}</code>
 
 Kişi id: <code>{kwargs.get('user_id','')}</code>
@@ -1305,7 +1304,7 @@ async def baslat(message):
 
     keyboard = types.InlineKeyboardMarkup()
     callback_button1 = types.InlineKeyboardButton(text="✍️ Sessiz Sinema", callback_data="sessiz_sinema")
-    callback_button2 = types.InlineKeyboardButton(text="🔠 Kelime Türetme", callback_data="kelimeoyunu")
+    callback_button2 = types.InlineKeyboardButton(text="🔠 Boşluk Doldurma", callback_data="kelimeoyunu")
     callback_button3 = types.InlineKeyboardButton(text="🌟 Doğruluk Cesaret", callback_data="dogrulukcesaret")
     keyboard.add(callback_button1)
     keyboard.add(callback_button2)
