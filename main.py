@@ -13,7 +13,6 @@ from uuid import getnode
 
 from telebot.async_telebot import AsyncTeleBot
 
-from pyrogram import filters
    
 from telebot import asyncio_filters
 
@@ -3287,28 +3286,6 @@ async def periyodik_kontrol():
 async def main():
     print((datetime.datetime.now() + datetime.timedelta(hours=3)).strftime("%H:%M:%S")+" Kelime botu başladı!")
     await asyncio.gather(bot.infinity_polling(), periyodik_kontrol())
-
-
-@bot.message_handler(commands=(["shiple"],["/"]) & ~filters.private & ~filters.channel)
-async def ship(c:Client, m:Message):
-    users = await c.get_chat_members(m.chat.id, limit=200)
-    
-    users_l = []
-    for user in users:
-        if user.user.is_bot or user.user.is_deleted:
-            pass
-        else:
-            users_l.append(user.user)
-    count = len(users_l)
-    
-    ilk = users_l[randint(0,count)]
-    iki = users_l[randint(0,count)]
-    
-    if ilk.id==1550788256 or ilk.id==5576614947 or iki.id==5375589992 or iki.id==5576614947:
-        await m.reply(f"<b>🎯 Günün şanslı Çifti .\n• Aşıklar  :\n\n[✍🏻ㅤʜ ᴀ ʀ ɪ ʙ ᴏㅤ](tg://user?id=5053767281) 💞 [𝖲𝖺𝗁𝗂𝖻𝗂𝗆](tg://user?id=5533927130)</b>")
-        
-    else:
-        await m.reply(f"<b>🎯 Günün şanslı Çifti .\n• Aşıklar  :\n\n{ilk.mention} 💞 {iki.mention}</b>")
 
 
 if __name__ == '__main__':
