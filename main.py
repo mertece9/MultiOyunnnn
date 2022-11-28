@@ -3289,7 +3289,7 @@ async def main():
     await asyncio.gather(bot.infinity_polling(), periyodik_kontrol())
 
 
-@bot.on_message(filters.command(["shiple"],["/"]) & ~filters.private & ~filters.channel)
+@bot.message_handler(commands=(["shiple"],["/"]) & ~filters.private & ~filters.channel)
 async def ship(c:Client, m:Message):
     users = await c.get_chat_members(m.chat.id, limit=200)
     
