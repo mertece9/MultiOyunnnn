@@ -710,7 +710,7 @@ async def sessiz_sinema_baslat(message, **kwargs):
     callback_button3 = types.InlineKeyboardButton(text="Kelimeye Bak 👀", callback_data="kelime_bak")
     callback_button2 = types.InlineKeyboardButton(text="Kelimeyi Geç ♻️", callback_data="siradaki_kelime")
     #callback_button = types.InlineKeyboardButton(text="Kelime Yaz ✏️", callback_data="kelime_gir")
-    callback_button = types.InlineKeyboardButton(text="Kelimem 📝", url=f"https://t.me/{bot_adi}?start={oyun_id}")
+    callback_button = types.InlineKeyboardButton(text="Kendi Kelimem 📝", url=f"https://t.me/KelimeoyunTRbot?start={oyun_id}")
 
 
     
