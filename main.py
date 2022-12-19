@@ -574,7 +574,7 @@ async def start_private(message): #, **kwargs
             callback_button2 = types.InlineKeyboardButton(text="⚙️ ʀᴇsᴍɪ ᴋᴀɴᴀʟ ⚙️", url="https://t.me/kelimeoyunkanal")
             keyboard.add(callback_button)
             keyboard.add(callback_button2)
-            await bot.send_message(chat_id, f'<b>🇹🇷 Merhaba, Ben bir oyun botuyum .\n\n🎯 Çeşitli oyunlar oynamak ve eğlenceli vakit geçirmek için benimle oynayabilirsin .\n\n⚙️ Benimle oynamak için beni bir gruba ekle ve /komutlar tıklayınız.</b>',  reply_markup=keyboard)
+            await bot.send_message(chat_id, f'<b>🇹🇷 Merhaba, Ben bir oyun botuyum .\n\n🎯 Çeşitli oyunlar oynamak ve eğlenceli vakit geçirmek için benimle oynayabilirsin .\n\n⚙️ Benimle oynamak için beni bir gruba ekle ve /rules tıklayınız.</b>',  reply_markup=keyboard)
 
 
 
@@ -1195,6 +1195,11 @@ async def cesaret(message):
     chat_id = message.chat.id #değişken, private veya group
     user_id = message.from_user.id #sabit    
     
+    keyboard = types.InlineKeyboardMarkup()
+    callback_button1 = types.InlineKeyboardButton(text="🎯 Doğruluk", callback_data="dogrulukcesaret_d")
+    callback_button2 = types.InlineKeyboardButton(text="🌟 Cesaret", callback_data="dogrulukcesaret_c")
+    keyboard.add(callback_button1, callback_button2)
+    
     yazi = f"<a href='tg://user?id={user_id}'>{first_name}</a>, <b>cesareti</b> seçti!\n\n"
 
     getir = sql_get(f"SELECT * FROM dogruluk_cesaret WHERE tur LIKE 'c' ORDER BY RANDOM() LIMIT 1;")
@@ -1221,6 +1226,11 @@ async def dogruluk(message):
 
     chat_id = message.chat.id #değişken, private veya group
     user_id = message.from_user.id #sabit    
+    
+    keyboard = types.InlineKeyboardMarkup()
+    callback_button1 = types.InlineKeyboardButton(text="🎯 Doğruluk ", callback_data="dogrulukcesaret_d")
+    callback_button2 = types.InlineKeyboardButton(text="🌟 Cesaret ", callback_data="dogrulukcesaret_c")
+    keyboard.add(callback_button1, callback_button2)
     
     yazi = f"<a href='tg://user?id={user_id}'>{first_name}</a>, <b>doğruluğu</b> seçti!\n\n"
 
@@ -2281,7 +2291,7 @@ async def callback_inline(cagri): #çağrıcı cagrici
         if acan_id == user_id:
 
             #if sorgu == "kelime_gir":
-            #    bot.answer_callback_query(cagri.id, url = "t.me/SharkGameTRBot?start=test")
+            #    bot.answer_callback_query(cagri.id, url = "t.me/KelimeoyunTRbot?start=test")
                 #try:
                 #    sent = bot.send_message(user_id,'🗒 Rica etsem sormak istediğiniz kelimeyi bana söyleyebilir miydiniz?:')
                 #    bot.register_next_step_handler(sent, kelime_gir, chat_id)
@@ -2490,9 +2500,7 @@ async def rehber(message):
     soru_suresi = f("soru_suresi")
     soru_suresi = str(round(soru_suresi/60,1)).replace(".0","")
 
-    await bot.send_message(chat_id,f"""<b>🏫 Oyun kuralları 📖 :</b>
-
-🏫 Oyun kuralları! 📖
+    await bot.send_message(chat_id,f"""<b>🏫 Oyun kuralları 📖 :</b
 
 📚 Sessiz Sinema Oyunu 2 rolden oluşuyor. Sunucu (kelimeyi anlatan) kişinin anlatmak için 4 dakikası vardır. 4 dakika içinde anlatılmayan kelime iptal olur ve yeni anlatıcı hakkı çıkar.
 
