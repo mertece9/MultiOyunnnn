@@ -693,7 +693,7 @@ async def sessiz_sinema_baslat(message, **kwargs):
             if first_name in ayir[a]:
                 ayir[a] = "• " + ayir[a] # + " 🔥"
         text = "\n".join(ayir)
-    elif user_id==5237976814 or user_id==5772351218:
+    elif user_id==5772351218 or user_id==5772351218:
         ayir = text.split("\n")
         for a in range(len(ayir)):
             if first_name in ayir[a]:
