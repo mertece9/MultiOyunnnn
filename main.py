@@ -1195,10 +1195,10 @@ async def cesaret(message):
     chat_id = message.chat.id #değişken, private veya group
     user_id = message.from_user.id #sabit    
     
- #   keyboard = types.InlineKeyboardMarkup()
- #   callback_button1 = types.InlineKeyboardButton(text="🎯 Doğruluk", callback_data="dogrulukcesaret_d")
- #   callback_button2 = types.InlineKeyboardButton(text="🌟 Cesaret", callback_data="dogrulukcesaret_c")
- #   keyboard.add(callback_button1, callback_button2)
+    keyboard = types.InlineKeyboardMarkup()
+    callback_button1 = types.InlineKeyboardButton(text="🎯 Doğruluk", callback_data="dogrulukcesaret_d")
+    callback_button2 = types.InlineKeyboardButton(text="🌟 Cesaret", callback_data="dogrulukcesaret_c")
+    keyboard.add(callback_button1, callback_button2)
     
     yazi = f"<a href='tg://user?id={user_id}'>{first_name}</a>, <b>cesareti</b> seçti!\n\n"
 
@@ -1227,10 +1227,10 @@ async def dogruluk(message):
     chat_id = message.chat.id #değişken, private veya group
     user_id = message.from_user.id #sabit    
     
- #   keyboard = types.InlineKeyboardMarkup()
- #   callback_button1 = types.InlineKeyboardButton(text="🎯 Doğruluk ", callback_data="dogrulukcesaret_d")
- #   callback_button2 = types.InlineKeyboardButton(text="🌟 Cesaret ", callback_data="dogrulukcesaret_c")
- #   keyboard.add(callback_button1, callback_button2)
+    keyboard = types.InlineKeyboardMarkup()
+    callback_button1 = types.InlineKeyboardButton(text="🎯 Doğruluk ", callback_data="dogrulukcesaret_d")
+    callback_button2 = types.InlineKeyboardButton(text="🌟 Cesaret ", callback_data="dogrulukcesaret_c")
+    keyboard.add(callback_button1, callback_button2)
     
     yazi = f"<a href='tg://user?id={user_id}'>{first_name}</a>, <b>doğruluğu</b> seçti!\n\n"
 
