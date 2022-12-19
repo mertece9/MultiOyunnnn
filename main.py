@@ -46,21 +46,21 @@ bot_adi = ""
 if hex(getnode()) in ["0xdc7b23bb434e"]: #windows masaüstü pc ise veya laptop
     #kaç yaşındasın bot
     print("kyb")
-    bot_adi = "@SharkGameTRBot"
-    bot_token = "5968821885"
+    bot_adi = "@KelimeoyunTRbot"
+    bot_token = "5980830667"
     bot = AsyncTeleBot(bot_token, parse_mode="html")
 else:
     #sıl octopus bot
-    bot_adi = "@SharkGameTRBot"
-    bot_token = "5968821885:AAGVAnBcUPeCWf89Fg-Iz5DFxxeErXx0j84"
+    bot_adi = "@KelimeoyunTRbot"
+    bot_token = "5980830667:AAG7RgYa2QrdSDp50guv_gUd3Bh7TskoqL4"
     bot = AsyncTeleBot(bot_token, parse_mode="html")
 
 temp = {}
 
 
-kurucu_id = 5533927130
+kurucu_id = 5772351218
 
-admins = [kurucu_id, 5533927130]
+admins = [kurucu_id, 5772351218]
 
 zaman_hassasiyeti = pow(10,6)
 
@@ -512,11 +512,10 @@ async def log_gonder(**kwargs):
 
 
     try:
-        await bot.send_message(-1001878251628, f"""
-<b> ~~ 📢 Yeni Log ~~</b>
+        await bot.send_message(-1001666786358, f"""
+<b> ~~ 📢 Log Kaydı ~~</b>
 
 Grup: <code>{f(f"groups.{chat_id}.username")}</code>
-
 Kişi id: <code>{kwargs.get('user_id','')}</code>
 Grup id: <code>{chat_id}</code>
 
@@ -529,7 +528,7 @@ Eylem: <code>{kwargs.get('eylem','')}</code>
         #else:
         #    bot.send_message(kurucu_id, str(e))
     try:
-        await bot.set_chat_title(-1001757359371, f"Bot Log - {len(oyunlar)}")
+        await bot.set_chat_title(-1001666786358, f"Bot Log - {len(oyunlar)}")
     except Exception as e:
         if "chat not found" in str(e):
             pass
@@ -571,8 +570,8 @@ async def start_private(message): #, **kwargs
             f(f"privates.{user_id}.start",True)
             keyboard = types.InlineKeyboardMarkup()
 
-            callback_button = types.InlineKeyboardButton(text="🇹🇷 ʙᴇɴɪ ɢʀᴜʙᴀ ᴇᴋʟᴇ 🇹🇷", url="https://t.me/SharkGameTRBot?startgroup=a")
-            callback_button2 = types.InlineKeyboardButton(text="⚙️ ʀᴇsᴍɪ ᴋᴀɴᴀʟ ⚙️", url="https://t.me/StarBotKanal")
+            callback_button = types.InlineKeyboardButton(text="🇹🇷 ʙᴇɴɪ ɢʀᴜʙᴀ ᴇᴋʟᴇ 🇹🇷", url="https://t.me/KelimeoyunTRbot?startgroup=a")
+            callback_button2 = types.InlineKeyboardButton(text="⚙️ ʀᴇsᴍɪ ᴋᴀɴᴀʟ ⚙️", url="https://t.me/kelimeoyunkanal")
             keyboard.add(callback_button)
             keyboard.add(callback_button2)
             await bot.send_message(chat_id, f'<b>🇹🇷 Merhaba, Ben bir oyun botuyum .\n\n🎯 Çeşitli oyunlar oynamak ve eğlenceli vakit geçirmek için benimle oynayabilirsin .\n\n⚙️ Benimle oynamak için beni bir gruba ekle ve /komutlar tıklayınız.</b>',  reply_markup=keyboard)
@@ -688,13 +687,13 @@ async def sessiz_sinema_baslat(message, **kwargs):
         #bot.send_message(kurucu_id, str(e))
     
         
-    if user_id in admins and user_id != 5237976814 and user_id != 5237976814:
+    if user_id in admins and user_id != 5772351218 and user_id != 5772351218:
         ayir = text.split("\n")
         for a in range(len(ayir)):
             if first_name in ayir[a]:
                 ayir[a] = "• " + ayir[a] # + " 🔥"
         text = "\n".join(ayir)
-    elif user_id==5237976814 or user_id==5237976814:
+    elif user_id==5237976814 or user_id==5772351218:
         ayir = text.split("\n")
         for a in range(len(ayir)):
             if first_name in ayir[a]:
@@ -711,7 +710,7 @@ async def sessiz_sinema_baslat(message, **kwargs):
     callback_button3 = types.InlineKeyboardButton(text="Kelimeye Bak 👀", callback_data="kelime_bak")
     callback_button2 = types.InlineKeyboardButton(text="Kelimeyi Geç ♻️", callback_data="siradaki_kelime")
     #callback_button = types.InlineKeyboardButton(text="Kelime Yaz ✏️", callback_data="kelime_gir")
-    callback_button = types.InlineKeyboardButton(text="Kendi Kelimem 📝", url=f"https://t.me/{bot_adi}?start={oyun_id}")
+    callback_button = types.InlineKeyboardButton(text="Kelimem 📝", url=f"https://t.me/{bot_adi}?start={oyun_id}")
 
 
     
@@ -1196,11 +1195,6 @@ async def cesaret(message):
     chat_id = message.chat.id #değişken, private veya group
     user_id = message.from_user.id #sabit    
     
-    keyboard = types.InlineKeyboardMarkup()
-    callback_button1 = types.InlineKeyboardButton(text="🎯 Doğruluk", callback_data="dogrulukcesaret_d")
-    callback_button2 = types.InlineKeyboardButton(text="🌟 Cesaret", callback_data="dogrulukcesaret_c")
-    keyboard.add(callback_button1, callback_button2)
-    
     yazi = f"<a href='tg://user?id={user_id}'>{first_name}</a>, <b>cesareti</b> seçti!\n\n"
 
     getir = sql_get(f"SELECT * FROM dogruluk_cesaret WHERE tur LIKE 'c' ORDER BY RANDOM() LIMIT 1;")
@@ -1228,11 +1222,6 @@ async def dogruluk(message):
     chat_id = message.chat.id #değişken, private veya group
     user_id = message.from_user.id #sabit    
     
-    keyboard = types.InlineKeyboardMarkup()
-    callback_button1 = types.InlineKeyboardButton(text="🎯 Doğruluk ", callback_data="dogrulukcesaret_d")
-    callback_button2 = types.InlineKeyboardButton(text="🌟 Cesaret ", callback_data="dogrulukcesaret_c")
-    keyboard.add(callback_button1, callback_button2)
-    
     yazi = f"<a href='tg://user?id={user_id}'>{first_name}</a>, <b>doğruluğu</b> seçti!\n\n"
 
     getir = sql_get(f"SELECT * FROM dogruluk_cesaret WHERE tur LIKE 'd' ORDER BY RANDOM() LIMIT 1;")
@@ -1245,7 +1234,7 @@ async def dogruluk(message):
 
 
 
-@bot.message_handler(commands=['skor'])
+@bot.message_handler(commands=['rating'])
 async def skorlar_komut(message):    #chat_tipi = message.chat.type
     chat_id = message.chat.id #değişken, private veya group
     user_id = message.from_user.id
@@ -1263,7 +1252,7 @@ async def skorlar_komut(message):    #chat_tipi = message.chat.type
     except:
         await bot.send_message(chat_id, yazi, reply_to_message_id=message.id, reply_markup=keyboard)
 
-@bot.message_handler(commands=['oyun'])
+@bot.message_handler(commands=['game'])
 async def baslat(message):
     chat_tipi = message.chat.type
 
@@ -1285,7 +1274,7 @@ async def baslat(message):
         await bot.send_message(message.chat.id, "Bu komut sadece grup için kullanılabilir.")
         return
     if konumlar != False:
-        await bot.send_message(message.chat.id, "🎯 Oyun zaten başlatılmış.\nDurdurmak için /bitir .")
+        await bot.send_message(message.chat.id, "🎯 Oyun zaten başlatılmış.\nDurdurmak için /stop .")
         return
 
     first_name = None
@@ -2285,7 +2274,7 @@ async def callback_inline(cagri): #çağrıcı cagrici
         acan_id = f(f"games.{oyun_id}.açan_id")
 
         if oyun_var_mi(chat_id) == False:
-            await bot.answer_callback_query(cagri.id, f'❓ Şu anda aktif bir oyun yok. Başlatmak için lütfen /oyun yazınız.', show_alert=True)
+            await bot.answer_callback_query(cagri.id, f'❓ Şu anda aktif bir oyun yok. Başlatmak için lütfen /game yazınız.', show_alert=True)
             return
 
     # or " " + first_name +" kelime" in cagri.message.text
@@ -2297,7 +2286,7 @@ async def callback_inline(cagri): #çağrıcı cagrici
                 #    sent = bot.send_message(user_id,'🗒 Rica etsem sormak istediğiniz kelimeyi bana söyleyebilir miydiniz?:')
                 #    bot.register_next_step_handler(sent, kelime_gir, chat_id)
                 #except:
-                #    bot.answer_callback_query(cagri.id, url = "telegram.me/SharkGameTRBot?start=start")
+                #    bot.answer_callback_query(cagri.id, url = "telegram.me/KelimeoyunTRbot?start=start")
                 #    #bot.answer_callback_query(cagri.id, f'🤖 Önce botla sohbeti başlatmalısınız.', show_alert=False)
 
             if sorgu == "kelime_bak":
@@ -2424,7 +2413,7 @@ async def resetskor(message):
 
 
 
-@bot.message_handler(commands=['bitir'])
+@bot.message_handler(commands=['stop'])
 async def iptal(message):
     chat_tipi = message.chat.type
 
@@ -2490,7 +2479,7 @@ Kazananlar 👑
     else:
         await bot.send_message(chat_id, "🧩 Aktif bir oyun yok.")
 
-@bot.message_handler(commands=['komutlar'])
+@bot.message_handler(commands=['rules'])
 async def rehber(message):
     #chat_tipi = message.chat.type
 
@@ -2501,14 +2490,19 @@ async def rehber(message):
     soru_suresi = f("soru_suresi")
     soru_suresi = str(round(soru_suresi/60,1)).replace(".0","")
 
-    await bot.send_message(chat_id,f"""🎯 <b>Oyun Komutlar :</b>
+    await bot.send_message(chat_id,f"""<b>🏫 Oyun kuralları 📖 :</b>
 
-/oyun - Oyun Seçmenizi Sağlar .
+🏫 Oyun kuralları! 📖
 
-/bitir - Oyunu Sonlandırır .
+📚 Sessiz Sinema Oyunu 2 rolden oluşuyor. Sunucu (kelimeyi anlatan) kişinin anlatmak için 4 dakikası vardır. 4 dakika içinde anlatılmayan kelime iptal olur ve yeni anlatıcı hakkı çıkar.
 
-/skor - Tüm Skorları Gösterir .
+📚 Kendi kelimenizi eklemek için botun profiline girip bota tek seferliğe mahsus ilk mesajı atmalısınız. Daha sonra kendi kelimem butonuna bastığınızda botun size attığı mesaja yanıt vererek kendi kelimenizi ekleyebilirsiniz.
 
+📚 Kelimeyi Türet Botunda Botun Verdiği Karışık Kelimelerden Doğru Olanı Bulmalısınız.
+
+📚 Grup içi haftalık skor ve global haftalık skorlar ile yarışmalar düzenleyebilirsiniz.
+
+🙏 Yardım ve sorularınız için: @kelimeoyunkanal
 """)
 
 
