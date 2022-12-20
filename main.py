@@ -1204,7 +1204,7 @@ async def cesaret(message):
 
     getir = sql_get(f"SELECT * FROM dogruluk_cesaret WHERE tur LIKE 'c' ORDER BY RANDOM() LIMIT 1;")
     yazi = yazi + getir["yazi"]
-    await send_msgimg(chat_id,yazi, reply_markup=keyboard)
+    await send_msgimg(chat_id,yazi)
 
 
 @bot.message_handler(commands=['d'])
@@ -1236,7 +1236,7 @@ async def dogruluk(message):
 
     getir = sql_get(f"SELECT * FROM dogruluk_cesaret WHERE tur LIKE 'd' ORDER BY RANDOM() LIMIT 1;")
     yazi = yazi + getir["yazi"]
-    await send_msgimg(chat_id,yazi, reply_markup=keyboard)
+    await send_msgimg(chat_id,yazi)
 
 
 
