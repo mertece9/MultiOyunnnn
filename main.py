@@ -574,7 +574,7 @@ async def start_private(message): #, **kwargs
             callback_button2 = types.InlineKeyboardButton(text="⚙️ ʀᴇsᴍɪ ᴋᴀɴᴀʟ ⚙️", url="https://t.me/kelimeoyunkanal")
             keyboard.add(callback_button)
             keyboard.add(callback_button2)
-            await bot.send_message(chat_id, f'<b>🇹🇷 Merhaba, Ben bir oyun botuyum .\n\n🎯 Çeşitli oyunlar oynamak ve eğlenceli vakit geçirmek için benimle oynayabilirsin .\n\n⚙️ Benimle oynamak için beni bir gruba ekle ve /rules tıklayınız.</b>',  reply_markup=keyboard)
+            await bot.send_message(chat_id, f'<b>🇹🇷 Merhaba, Ben bir oyun botuyum .\n\n🎯 Çeşitli oyunlar oynamak ve eğlenceli vakit geçirmek için benimle oynayabilirsin .\n\n⚙️ Benimle oynamak için beni bir gruba ekleyin ve Yönetici Yapın .</b>',  reply_markup=keyboard)
 
 
 
@@ -2489,7 +2489,7 @@ Kazananlar 👑
     else:
         await bot.send_message(chat_id, "🧩 Aktif bir oyun yok.")
 
-@bot.message_handler(commands=['help'])
+@bot.message_handler(commands=['jdjdjd'])
 async def rehber(message):
     #chat_tipi = message.chat.type
 
