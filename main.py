@@ -1661,7 +1661,7 @@ Bulduğu cevaplar: \t{f(f"privates.{user_id}.bilme-sayısı")}
                 keyboard.add(callback_button1, callback_button3)
                 if skorlar!=[]:
                     txt = "Global haftanın en iyi grupları 📜\n\n"
-n
+
 
                     skorlar = dict(sorted(skorlar.items(), key=lambda item: item[1])[::-1])
 
