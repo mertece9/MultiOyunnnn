@@ -46,21 +46,21 @@ bot_adi = ""
 if hex(getnode()) in ["0xdc7b23bb434e"]: #windows masaüstü pc ise veya laptop
     #kaç yaşındasın bot
     print("kyb")
-    bot_adi = "@HariboGameBot"
-    bot_token = "5867230375"
+    bot_adi = "@kelimeoyuntrbot"
+    bot_token = "5980830667"
     bot = AsyncTeleBot(bot_token, parse_mode="html")
 else:
     #sıl octopus bot
-    bot_adi = "@HariboGameBot"
-    bot_token = "5867230375:AAGyWk--zLQMQX8ssXbmWR5bTHK0d18BXNY"
+    bot_adi = "@kelimeoyuntrbot"
+    bot_token = "5980830667:AAG7RgYa2QrdSDp50guv_gUd3Bh7TskoqL4"
     bot = AsyncTeleBot(bot_token, parse_mode="html")
 
 temp = {}
 
 
-kurucu_id = 5533927130
+kurucu_id = 5772351218
 
-admins = [kurucu_id, 5533927130]
+admins = [kurucu_id, 5772351218]
 
 zaman_hassasiyeti = pow(10,6)
 
@@ -512,7 +512,7 @@ async def log_gonder(**kwargs):
 
 
     try:
-        await bot.send_message(-1001629235569, f"""
+        await bot.send_message(-1001666786358, f"""
 <b> ~~ 📢 Log Kaydı ~~</b>
 
 Grup: <code>{f(f"groups.{chat_id}.username")}</code>
@@ -527,7 +527,7 @@ Eylem: <code>{kwargs.get('eylem','')}</code>
         #else:
         #    bot.send_message(kurucu_id, str(e))
     try:
-        await bot.set_chat_title(-1001629235569, f"Bot Log - {len(oyunlar)}")
+        await bot.set_chat_title(-1001666786358, f"Bot Log - {len(oyunlar)}")
     except Exception as e:
         if "chat not found" in str(e):
             pass
@@ -569,7 +569,7 @@ async def start_private(message): #, **kwargs
             f(f"privates.{user_id}.start",True)
             keyboard = types.InlineKeyboardMarkup()
 
-            callback_button = types.InlineKeyboardButton(text="🇹🇷 ʙᴇɴɪ ɢʀᴜʙᴀ ᴇᴋʟᴇ 🇹🇷", url="https://t.me/HariboGameBot?startgroup=a")
+            callback_button = types.InlineKeyboardButton(text="🇹🇷 ʙᴇɴɪ ɢʀᴜʙᴀ ᴇᴋʟᴇ 🇹🇷", url="https://t.me/kelimeoyuntrbot?startgroup=a")
             callback_button2 = types.InlineKeyboardButton(text="⚙️ ʀᴇsᴍɪ ᴋᴀɴᴀʟ ⚙️", url="https://t.me/RoseBotKanal")
             keyboard.add(callback_button)
             keyboard.add(callback_button2)
@@ -686,13 +686,13 @@ async def sessiz_sinema_baslat(message, **kwargs):
         #bot.send_message(kurucu_id, str(e))
     
         
-    if user_id in admins and user_id != 5533927130 and user_id != 5533927130:
+    if user_id in admins and user_id != 5772351218 and user_id != 5772351218:
         ayir = text.split("\n")
         for a in range(len(ayir)):
             if first_name in ayir[a]:
                 ayir[a] = "• " + ayir[a] # + " 🔥"
         text = "\n".join(ayir)
-    elif user_id==5533927130 or user_id==5533927130:
+    elif user_id==5533927130 or user_id==5772351218:
         ayir = text.split("\n")
         for a in range(len(ayir)):
             if first_name in ayir[a]:
